@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.army.dao.RankDAO">
+
+    <select id="getById" parameterType="int" resultType="com.solvd.army.models.structure.Rank">
+        select * from ranks where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.solvd.army.models.structure.Rank">
+        insert into ranks(rank)VALUES(#{rank})
+    </insert>
+
+    <update id="update" parameterType="com.solvd.army.models.structure.Rank">
+        update ranks set rank=#{rank} where id= #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from ranks where id = #{id}
+    </delete>
+
+    <select id="getAll">
+        select * from ranks
+    </select>
+
+</mapper>

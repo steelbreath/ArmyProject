@@ -13,7 +13,7 @@ public class BasicConnectionPool implements ConnectionPool{
     private String password;
     private List<Connection> connectionPool;
     private List<Connection> usedConnections = new ArrayList<>();
-    private final static int INITIAL_POOL_SIZE = 5;
+    private final static int INITIAL_POOL_SIZE = 1;
     private final static int MAX_POOL_SIZE = 10;
     private final static int MAX_TIMEOUT = 5;
 
@@ -25,16 +25,9 @@ public class BasicConnectionPool implements ConnectionPool{
         return new BasicConnectionPool(url, user, password, pool);
     }
 
-    public BasicConnectionPool() {}
+    public BasicConnectionPool(){}
     public BasicConnectionPool(String url, String user, String password, List<Connection> pool) {}
-    public BasicConnectionPool(String url, String user, String password, List<Connection> connectionPool,
-                               List<Connection> usedConnections) {
-        this.url = url;
-        this.user = user;
-        this.password = password;
-        this.connectionPool = connectionPool;
-        this.usedConnections = usedConnections;
-    }
+
 
     @Override
     public Connection getConnection() throws SQLException {
@@ -57,6 +50,7 @@ public class BasicConnectionPool implements ConnectionPool{
         usedConnections.add(connection);
         return connection;
     }
+
     @Override
     public boolean releaseConnection(Connection connection) {
         connectionPool.add(connection);
