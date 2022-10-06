@@ -1,8 +1,5 @@
 package com.solvd.army.models.structure;
 
-import com.solvd.army.models.structure.MilitaryBase;
-import com.solvd.army.models.structure.Soldier;
-
 import java.util.List;
 
 public class Subdivision {

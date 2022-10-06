@@ -1,20 +1,14 @@
 package com.solvd.army;
 
-import com.solvd.army.connectionPool.BasicConnectionPool;
-import com.solvd.army.connectionPool.ConnectionPool;
-import com.solvd.army.dao.SoldierDAO;
-import com.solvd.army.dao.impl.SoldierDAOImpl;
-import com.solvd.army.models.structure.Soldier;
+import com.solvd.army.dao.AmmunitionDAO;
+import com.solvd.army.dao.impl.AmmunitionDAOImpl;
+import com.solvd.army.models.equipment.Ammunition;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
 
 import java.io.*;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Properties;
 
 public class Main {
     private static final Logger LOGGER = Logger.getLogger(Main.class);
@@ -33,21 +27,22 @@ public class Main {
 //            throw new RuntimeException(e.getMessage());
 //
 
-        String resource = "mybatis/mybatis-config.xml";
-        InputStream inputstream = Resources.getResourceAsStream(resource);
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputstream);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        SoldierDAO soldierDAO = sqlSession.getMapper(SoldierDAO.class);
-        Soldier soldier = soldierDAO.getById(1);
-        LOGGER.info(soldier);
-
 //        String resource = "mybatis/mybatis-config.xml";
 //        InputStream inputstream = Resources.getResourceAsStream(resource);
 //        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputstream);
-//
-//        SoldierDAO userDao = new SoldierDAOImpl(sqlSessionFactory);
-//        Soldier soldier = userDao.getById(1);
-//        LOGGER.info(soldier);
+//        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+//        RankDAO rankDAO = sqlSession.getMapper(RankDAO.class);
+//        Rank rank = rankDAO.getById(1);
+//        LOGGER.info(rank);
+
+        String resource = "mybatis/mybatis-config.xml";
+        InputStream inputstream = Resources.getResourceAsStream(resource);
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputstream);
+
+        AmmunitionDAO ammunitionDao = new AmmunitionDAOImpl(sqlSessionFactory);
+        Ammunition ammunition = ammunitionDao.getById(1);
+        LOGGER.info(ammunition);
 
     }
 }

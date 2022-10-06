@@ -1,7 +1,10 @@
 package com.solvd.army.models.structure;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import java.util.List;
 
+@JsonRootName(value = "Rank")
 public class Rank {
     private Long id;
     private String rank;

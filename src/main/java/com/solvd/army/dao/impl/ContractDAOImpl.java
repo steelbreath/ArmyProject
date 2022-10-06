@@ -2,7 +2,6 @@ package com.solvd.army.dao.impl;
 
 import com.solvd.army.dao.ContractDAO;
 import com.solvd.army.models.documents.Contract;
-import com.solvd.army.models.structure.Soldier;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
